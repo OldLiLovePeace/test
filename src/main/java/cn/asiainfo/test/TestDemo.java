@@ -8,8 +8,9 @@ import java.util.Date;
 
 public class TestDemo {
 	public static void main(String[] args) {
-		
-		
+
+		System.out.println("hello world");
+
 		NumberFormat numberFormat = NumberFormat.getInstance();
 		// 设置精确到小数点后0位
 		numberFormat.setMaximumFractionDigits(0);
