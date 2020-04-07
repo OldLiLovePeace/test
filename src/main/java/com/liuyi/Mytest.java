@@ -14,5 +14,6 @@ public class Mytest {
 		System.out.println(str1 == str2.intern());
 		System.out.println(str3.intern() == str2.intern());
 		
+		
 	}
 }
