@@ -1,17 +1,16 @@
 package cn.limy.test.java8;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ListSpilitTest {
 	//按每3个一组分割
@@ -92,6 +91,14 @@ public class ListSpilitTest {
 	        result.add(value);
 	    }
 	    return result;
+	}
+
+	@Test
+	public void testflatMap(){
+		List<String> strings = Arrays.asList("123", "456");
+		strings.stream().flatMap(s->{
+			return Arrays.stream(s.split(""));
+		}).collect(Collectors.toList()).forEach(a-> System.out.println(a));
 	}
 	
 }
