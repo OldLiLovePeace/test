@@ -2,3 +2,4 @@ server:
   port: 8080
   servlet:
     context-path: /test
+#    token: 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
