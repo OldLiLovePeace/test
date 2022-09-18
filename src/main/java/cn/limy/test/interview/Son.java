@@ -1,4 +1,4 @@
-package cn.limy.test.面试;
+package cn.limy.test.interview;
 
 /*父类在hello()方法中使用this关键字调用say()方法*/
 class Parent {

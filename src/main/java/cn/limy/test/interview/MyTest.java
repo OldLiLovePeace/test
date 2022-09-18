@@ -1,4 +1,4 @@
-package cn.limy.test.面试;
+package cn.limy.test.interview;
 
 public class MyTest {
     /**

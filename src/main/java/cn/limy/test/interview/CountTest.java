@@ -1,4 +1,4 @@
-package cn.limy.test.面试;
+package cn.limy.test.interview;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
