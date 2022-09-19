@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+public class TwoSumSolution {
     public static int[]  twoSum(int[] nums,int target){
         int n = nums.length;
         for (int i=0; i<n; i++){
@@ -33,6 +33,6 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {4,5,2,3,1};
-        System.out.println(JSON.toJSONString(Solution.twoSum2(nums, 5)));
+        System.out.println(JSON.toJSONString(TwoSumSolution.twoSum2(nums, 5)));
     }
 }
