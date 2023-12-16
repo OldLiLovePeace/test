@@ -4,8 +4,8 @@ package cn.limy.test.extend;
  * https://blog.csdn.net/Lemon_MY/article/details/88880209
  * https://www.cnblogs.com/wenruo/articles/5349525.html
  */
-public class Second类的初始化 extends First {
-    public Second类的初始化() {
+public class SecondInit extends First {
+    public SecondInit() {
         aMethod();
     }
 
@@ -14,7 +14,7 @@ public class Second类的初始化 extends First {
     }
 
     public static void main(String[] args) {
-        new Second类的初始化();
+        new SecondInit();
     }
 }
 
