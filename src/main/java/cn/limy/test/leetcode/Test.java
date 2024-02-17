@@ -2,8 +2,7 @@ package cn.limy.test.leetcode;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
@@ -254,6 +253,28 @@ class Solution9 {
         }
         // 5. 返回新链表的头节点
         return map.get(head);
+    }
+
+    class Solution10 {
+        public List<Integer> preorderTraversal(TreeNode root) {
+            List<Integer> result = new ArrayList<>();
+            if (root == null){
+                return result;
+            }
+            Stack<TreeNode> stack = new Stack<>();
+            stack.push(root);
+            while (!stack.isEmpty()){
+                TreeNode node = stack.pop();
+                result.add(node.val);
+                if (node.right != null){
+                    stack.push(node.right);
+                }
+                if (node.left != null){
+                    stack.push(node.left);
+                }
+            }
+            return result;
+        }
     }
 }
 
