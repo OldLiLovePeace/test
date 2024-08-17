@@ -9,49 +9,107 @@ public class Test {
 //        System.out.println(Solution.replaceSpace("We are happy."));
 //        System.out.println(Solution2.reverseLeftWords("abcdef", 2));
 
-       int[] preorder = {3,9,5,6,20,15,7};
-       int[] inorder = {5,9,6,3,15,20,7};
-        TreeNode treeNode = new Solution6().buildTree(preorder, inorder);
-        System.out.println(JSON.toJSONString(treeNode));
-        Node node11 = new Node(11);
-        Node node22 = new Node(22);
-        Node node33 = new Node(33);
+//       int[] preorder = {3,9,5,6,20,15,7};
+//       int[] inorder = {5,9,6,3,15,20,7};
+//        TreeNode treeNode = new Solution6().buildTree(preorder, inorder);
+//        System.out.println(JSON.toJSONString(treeNode));
+//        Node node11 = new Node(11);
+//        Node node22 = new Node(22);
+//        Node node33 = new Node(33);
+//
+//        node11.next = node22;
+//        node11.random = node33;
+//
+//        node22.next = node33;
+//        node22.random = node11;
+//
+//        node33.random = node22;
+//
+//        Node node = new Solution9().copyRandomList(node11);
+//        System.out.println(JSON.toJSONString(node));
 
-        node11.next = node22;
-        node11.random = node33;
+        TreeNode treeNode1 = new TreeNode(1);
+        TreeNode treeNode2= new TreeNode(2);
+        TreeNode treeNode3 = new TreeNode(3);
+        TreeNode treeNode4 = new TreeNode(4);
+        TreeNode treeNode5 = new TreeNode(5);
+        treeNode1.left = treeNode2;
+        treeNode1.right = treeNode3;
+        treeNode3.left = treeNode4;
+        treeNode3.right = treeNode5;
 
-        node22.next = node33;
-        node22.random = node11;
-
-        node33.random = node22;
-
-        Node node = new Solution9().copyRandomList(node11);
-        System.out.println(JSON.toJSONString(node));
+        List<Integer> integers = new Solution10().preorderTraversal(treeNode1);
+        System.out.println(integers);
 
 
     }
-}
 
-//Offer 05. 替换空格
-class Solution {
-    public static String replaceSpace(String s) {
-        int length = s.length();
-        char[] array = new char[length * 3];
-        int size = 0;
-        for (int i = 0; i < length; i++) {
-            char c = s.charAt(i);
-            if (c == ' ') {
-                array[size++] = '%';
-                array[size++] = '2';
-                array[size++] = '0';
-            } else {
-                array[size++] = c;
+
+    //Offer 05. 替换空格
+    public class Solution {
+        public  String replaceSpace(String s) {
+            int length = s.length();
+            char[] array = new char[length * 3];
+            int size = 0;
+            for (int i = 0; i < length; i++) {
+                char c = s.charAt(i);
+                if (c == ' ') {
+                    array[size++] = '%';
+                    array[size++] = '2';
+                    array[size++] = '0';
+                } else {
+                    array[size++] = c;
+                }
             }
+            String newStr = new String(array, 0, size);
+            return newStr;
         }
-        String newStr = new String(array, 0, size);
-        return newStr;
     }
+
+
+
+    public  class Solution977 {
+        public int[] sortedSquares(int[] nums) {
+            int right = nums.length - 1;
+            int left = 0;
+            int[] result = new int[nums.length];
+            int index = result.length - 1;
+            while (left <= right) {
+                if (nums[left] * nums[left] > nums[right] * nums[right]) {
+                    // 正数的相对位置是不变的， 需要调整的是负数平方后的相对位置
+                    result[index] = nums[left] * nums[left];
+                    index--;
+//                    ++left;
+                    left++;
+                } else {
+                    result[index] = nums[right] * nums[right];
+                    index--;
+//                    --right;
+                    right--;
+                }
+            }
+            return result;
+        }
+    }
+
+    public  class Solution209 {
+        public int sortedSquares(int[] nums,int s) {
+            int left = 0;
+            int sum = 0;
+            int result = 0;
+            for(int right =0; right < nums.length; right++){
+                sum += nums[right];
+                while(sum >= s){
+                    result = Math.min(result, right - left + 1);
+                }
+                sum -=nums[left++];
+            }
+            return result;
+        }
+    }
+
 }
+
 
 //面试题58 - II. 左旋转字符串（切片 / 列表 / 字符串，清晰图解）
 class Solution2 {
@@ -255,26 +313,28 @@ class Solution9 {
         return map.get(head);
     }
 
-    class Solution10 {
-        public List<Integer> preorderTraversal(TreeNode root) {
-            List<Integer> result = new ArrayList<>();
-            if (root == null){
-                return result;
-            }
-            Stack<TreeNode> stack = new Stack<>();
-            stack.push(root);
-            while (!stack.isEmpty()){
-                TreeNode node = stack.pop();
-                result.add(node.val);
-                if (node.right != null){
-                    stack.push(node.right);
-                }
-                if (node.left != null){
-                    stack.push(node.left);
-                }
-            }
+
+}
+
+class Solution10 {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null){
             return result;
         }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.right != null){
+                stack.push(node.right);
+            }
+            if (node.left != null){
+                stack.push(node.left);
+            }
+        }
+        return result;
     }
 }
 

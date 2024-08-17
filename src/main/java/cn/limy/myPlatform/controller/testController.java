@@ -4,6 +4,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-@Controller
+@RestController
 public class testController {
 
     private RestTemplate rest;
@@ -73,7 +74,7 @@ public class testController {
         }
         // 设置输出的格式
         response.reset();
-        response.setContentType("bin");
+        response.setContentType("text/plain");
         response.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
         // 循环取出流中的数据
         byte[] b = new byte[100];
