@@ -1,10 +1,11 @@
 package cn.limy.test.algorithmbasic2020master.class33;
 
+import jakarta.xml.bind.DatatypeConverter;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 
-import javax.xml.bind.DatatypeConverter;
 
 public class Hash {
 

@@ -1,14 +1,13 @@
 package cn.limy.myPlatform.controller;
 
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,13 +19,14 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
-public class testController {
+public class TestController {
 
     private RestTemplate rest;
 
-    @Resource(name = "taskExecutor")
+    @Resource(name = "mytaskExecutor")
     private  ThreadPoolTaskExecutor executor;
-    public testController() {
+
+    public TestController() {
         HttpComponentsClientHttpRequestFactory componentsFactory = new HttpComponentsClientHttpRequestFactory();
         this.rest = new RestTemplate();
         this.rest.setRequestFactory(componentsFactory);

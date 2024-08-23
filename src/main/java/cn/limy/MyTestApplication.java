@@ -13,8 +13,6 @@ import java.util.Arrays;
 /**
  * 我的第一个SpringBoot程序
  * 其中 @RestController 等同于 （@Controller 与 @ResponseBody）
- *
- * @author Levin
  */
 @RestController
 @SpringBootApplication
