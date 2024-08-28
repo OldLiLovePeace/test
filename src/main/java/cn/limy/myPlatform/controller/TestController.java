@@ -1,10 +1,15 @@
 package cn.limy.myPlatform.controller;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +24,9 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
+@RequestMapping(value = "/start")
+@OpenAPIDefinition(info = @Info(title = "TestControllerOpenApi", version = "v1"))
+@Tag(name = "TestControllerTag")
 public class TestController {
 
     private RestTemplate rest;
@@ -32,6 +40,7 @@ public class TestController {
         this.rest.setRequestFactory(componentsFactory);
     }
 
+    @Operation(summary = "http2Test1-operation")
     @GetMapping(value = "/http2Test1")
     public String healthCheck() {
         String forObject = rest.getForObject("http://localhost:8080/test/demo1", String.class);
@@ -56,6 +65,7 @@ public class TestController {
         completableFutures.forEach(aa->aa.join());
     }
 
+    @Operation(summary = "testNginx-operation")
     @GetMapping(value = "/testNginx")
     public String testNginx() {
         return "come on";
